@@ -32,7 +32,7 @@ const ProductDetails = () => {
             <img
               src={product.image}
               alt={product.title}
-              className="h-96 md:rounded-tr-none md:rounded-l-lg object-fill w-full rounded-t-lg shadow-lg"
+              className="h-96 md:rounded-tr-none md:rounded-l-lg object-contain aspect-square w-full rounded-t-lg shadow-lg"
             />
           </div>
 
