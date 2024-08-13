@@ -11,7 +11,7 @@ const Signin = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center w-full min-h-screen bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 bg-opacity-70">
       {loading ? (
         <LoadingPage />
       ) : (

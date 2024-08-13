@@ -67,4 +67,4 @@ Check out the live demo of the project [here](https://shop-x-eight.vercel.app/).
 - **Abhinav Meshram**
   - Email: [meshram.ahinav1998@gmail.com](mailto:meshram.ahinav1998@gmail.com)
   - LinkedIn: [Abhinav Meshram](https://www.linkedin.com/in/abhinav-meshram-008267261/)
-  - GitHub: [abhiiinav199](https://github.com/abhiiinav199)
+  - GitHub: [abhiiinav199](https://github.com/abhiiinav199)nn

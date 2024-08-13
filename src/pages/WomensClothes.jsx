@@ -36,7 +36,7 @@ const WomensClothes = () => {
   if (!products || products.length === 0) return <NoProductsPage />
 
   return (
-    <div className="w-full min-h-[70svh] px-7 mx-auto">
+    <div className="w-full min-h-[70svh] px-7 mx-auto  bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 bg-opacity-70">
       <Searchbox searchQuery={searchQuery} setSearchQuery={setSearchQuery} selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
       <div className="my-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-4">
         {

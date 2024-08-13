@@ -4,15 +4,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
-import { useAuth } from "@clerk/clerk-react"
-
-
-
+import { useAuth } from "@clerk/clerk-react";
 
 const Cart = () => {
-
   const navigate = useNavigate();
-
   const { userId, isLoaded } = useAuth();
 
   useEffect(() => {
@@ -23,8 +18,6 @@ const Cart = () => {
 
   const { cart, increaseQuantity, decreaseQuantity, removeItem, calculateTotal, checkout } = useContext(ProductContext);
 
-
-  // Define a function to handle checkout and show toast
   const handleCheckout = () => {
     checkout();
     toast.success('Order Placed Successfully', {
@@ -35,23 +28,22 @@ const Cart = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "colored", // Enhanced theme
       transition: Bounce,
     });
 
-    // Redirect after a short delay to allow toast to display
     setTimeout(() => {
       navigate('/myorder');
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen p-4 bg-gray-100">
-      <h1 className="mb-6 text-2xl font-semibold text-center">Shopping Cart</h1>
+    <div className="min-h-screen p-4 bg-gray-900 text-gray-200"> {/* Dark background with light text */}
+      <h1 className="mb-8 text-3xl font-bold text-center text-white">Shopping Cart</h1>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
-          <thead className="text-gray-600 bg-gray-200">
+        <table className="min-w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg"> {/* Dark table with subtle shadows */}
+          <thead className="text-gray-300 bg-gray-700">
             <tr>
               <th className="px-4 py-3 text-sm font-medium text-left">Product</th>
               <th className="px-4 py-3 text-sm font-medium text-left">Quantity</th>
@@ -60,22 +52,22 @@ const Cart = () => {
               <th className="px-4 py-3 text-sm font-medium text-left">Action</th>
             </tr>
           </thead>
-          <tbody className="text-gray-700">
+          <tbody className="text-gray-300">
             {cart.length > 0 ? (
               cart.map(item => (
-                <tr key={item.id} className="hover:bg-gray-50">
+                <tr key={item.id} className="hover:bg-gray-700">
                   <td className="flex flex-col items-center gap-4 px-4 py-4 text-sm">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="object-cover w-16 h-16 rounded-md"
+                      className="object-cover w-16 h-16 rounded-md shadow-md"
                     />
                     <span>{item.title}</span>
                   </td>
                   <td className="px-4 py-4 text-sm">
                     <div className="flex items-center justify-center gap-2">
                       <button
-                        className="px-2 py-1 text-sm text-white bg-gray-800 rounded-md"
+                        className="px-2 py-1 text-sm text-gray-900 bg-gray-300 rounded-md"
                         disabled={item.quantity <= 1}
                         onClick={() => decreaseQuantity(item.id)}
                       >
@@ -83,7 +75,7 @@ const Cart = () => {
                       </button>
                       <span>{item.quantity}</span>
                       <button
-                        className="px-2 py-1 text-sm text-white bg-gray-800 rounded-md"
+                        className="px-2 py-1 text-sm text-gray-900 bg-gray-300 rounded-md"
                         onClick={() => increaseQuantity(item.id)}
                       >
                         +
@@ -94,7 +86,7 @@ const Cart = () => {
                   <td className="px-4 py-4 text-sm">₹{(item.quantity * item.price).toFixed(2)}</td>
                   <td className="px-4 py-4 text-sm">
                     <button
-                      className="hover:text-red-700 focus:outline-none text-sm text-red-500"
+                      className="hover:text-red-500 focus:outline-none text-sm text-red-400"
                       onClick={() => removeItem(item.id)}
                     >
                       Remove
@@ -104,15 +96,15 @@ const Cart = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="px-4 py-4 text-center text-gray-700">No items in the cart.</td>
+                <td colSpan="5" className="px-4 py-4 text-center text-gray-400">No items in the cart.</td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
 
-      <div className="p-6 mt-6 bg-white border border-gray-200 rounded-md shadow-md">
-        <div className="md:flex-row md:justify-between flex flex-col mb-4 text-xl font-semibold">
+      <div className="p-6 mt-8 bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+        <div className="md:flex-row md:justify-between flex flex-col mb-4 text-xl font-semibold text-gray-300">
           <h2>Order Summary</h2>
           <div className="md:mt-0 mt-4 text-lg">
             <span className="font-medium">Subtotal:</span>
@@ -121,7 +113,7 @@ const Cart = () => {
         </div>
         <div className="flex justify-end">
           <button
-            className="hover:bg-black focus:outline-none focus:ring-2 focus:ring-black md:w-40 w-full py-2 text-sm text-white bg-black rounded-md"
+            className="hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 md:w-40 w-full py-2 text-sm text-white bg-teal-500 rounded-md"
             onClick={handleCheckout}
           >
             Checkout
@@ -139,7 +131,7 @@ const Cart = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored" // Enhanced theme
         transition={Bounce}
       />
     </div>

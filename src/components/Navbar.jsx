@@ -1,3 +1,4 @@
+
 import { useState, useContext, useEffect } from 'react';
 import { ShoppingCartIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
@@ -13,7 +14,7 @@ const Navbar = () => {
     setTotalQuantity(getTotalQuantity());
   }, [getTotalQuantity]);
 
-  const activeStyleDesktop = "text-black font-bold underline underline-offset-4";
+  const activeStyleDesktop = "text-white font-bold underline underline-offset-4";
   const activeStyleMobile = "underline underline-offset-4";
 
   const toggleMobileMenu = () => {
@@ -22,41 +23,41 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="md:px-8 md:py-5 top-0 z-10 flex items-center justify-between w-full px-4 py-4 text-sm font-light bg-white border-b-2">
+      <nav className="md:px-8 md:py-5 top-0 z-10 flex items-center justify-between w-full px-4 py-4 text-sm font-light bg-gradient-to-r from-teal-500 via-teal-400 to-cyan-500">
         <div className="flex items-center gap-4">
-          <NavLink to="/" className="text-lg font-semibold">
+          <NavLink to="/" className="text-lg font-semibold text-white">
             Shop <span className='text-xl'>X</span>
           </NavLink>
         </div>
 
         <ul className="md:flex items-center hidden gap-4">
           <li>
-            <NavLink to="/" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/allproducts" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/allproducts" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               All
             </NavLink>
           </li>
           <li>
-            <NavLink to="/mens_clothing" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/mens_clothing" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               Men's Clothing
             </NavLink>
           </li>
           <li>
-            <NavLink to="/womens_clothing" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/womens_clothing" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               Women's Clothing
             </NavLink>
           </li>
           <li>
-            <NavLink to="/jewelery" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
-              Jewelery
+            <NavLink to="/jewelery" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
+              Jewellery
             </NavLink>
           </li>
           <li>
-            <NavLink to="/electronics" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/electronics" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               Electronics
             </NavLink>
           </li>
@@ -64,7 +65,7 @@ const Navbar = () => {
 
         <ul className="md:flex items-center hidden gap-4">
           <li>
-            <NavLink to="/myorder" className={({ isActive }) => (isActive ? activeStyleDesktop : undefined)}>
+            <NavLink to="/myorder" className={({ isActive }) => (isActive ? activeStyleDesktop : "text-white")}>
               My Orders
             </NavLink>
           </li>
@@ -73,13 +74,13 @@ const Navbar = () => {
               <UserButton />
             </SignedIn>
             <SignedOut>
-              <Link to="/sign-in">Sign In</Link>
+              <Link to="/sign-in" className="text-white">Sign In</Link>
             </SignedOut>
           </li>
           <li>
             <NavLink to="/cart">
               <div className="relative flex items-center gap-2">
-                <ShoppingCartIcon className="text-black-500 w-6 h-6 cursor-pointer" />
+                <ShoppingCartIcon className="w-6 h-6 text-white cursor-pointer" />
                 <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full">
                   {totalQuantity}
                 </span>
@@ -90,24 +91,23 @@ const Navbar = () => {
 
         <div className="md:hidden flex items-center">
           <div className="relative flex items-center gap-2 mx-2">
-            <ShoppingCartIcon className="w-6 h-6 text-black cursor-pointer" />
+            <ShoppingCartIcon className="w-6 h-6 text-white cursor-pointer" />
             <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full">
               {totalQuantity}
             </span>
           </div>
-          <button onClick={toggleMobileMenu} className="text-black-500 focus:outline-none">
-            {mobileNav ? <XMarkIcon className="text-black-500 w-6 h-6 cursor-pointer" /> : <Bars3Icon className="text-black-500 w-6 h-6 cursor-pointer" />}
+          <button onClick={toggleMobileMenu} className="focus:outline-none">
+            {mobileNav ? <XMarkIcon className="w-6 h-6 text-white cursor-pointer" /> : <Bars3Icon className="w-6 h-6 text-white cursor-pointer" />}
           </button>
         </div>
 
-        <div className={`fixed inset-y-0 left-0 w-64 bg-black text-white transform transition-transform duration-300 ease-in-out md:hidden z-20 ${mobileNav ? "translate-x-0" : "-translate-x-full"}`}>
+        <div className={`fixed inset-y-0 left-0 w-64 bg-gray-900 text-white transform transition-transform duration-300 ease-in-out md:hidden z-20 ${mobileNav ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="flex flex-col p-4">
             <div className='flex justify-between'>
               <NavLink to="/" className="mb-4 text-lg font-semibold">Shop <span className='text-xl'>X</span></NavLink>
-              <button onClick={toggleMobileMenu} className="text-black-500 focus:outline-none">
-                {mobileNav ? <XMarkIcon className="text-black-500 w-6 h-6 cursor-pointer" /> : undefined}
+              <button onClick={toggleMobileMenu} className="focus:outline-none">
+                {mobileNav ? <XMarkIcon className="w-6 h-6 text-white cursor-pointer" /> : undefined}
               </button>
-
             </div>
             <ul className="flex flex-col gap-4">
               <li>
@@ -145,7 +145,7 @@ const Navbar = () => {
                   <UserButton />
                 </SignedIn>
                 <SignedOut>
-                  <Link to="/sign-in">Sign In</Link>
+                  <Link to="/sign-in" className="text-white">Sign In</Link>
                 </SignedOut>
               </li>
               <li>
